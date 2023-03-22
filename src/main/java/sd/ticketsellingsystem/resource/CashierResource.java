@@ -30,7 +30,7 @@ public class CashierResource {
     public ResponseEntity<Cashier> getCashierByCredentials(@RequestBody Cashier cashier) {
         Cashier foundCashier = cashierService.findCashierByCredentials(cashier.getUsername(), cashier.getPassword());
         if (foundCashier != null) {
-            return new ResponseEntity<>(cashier, HttpStatus.OK);
+            return new ResponseEntity<>(foundCashier, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }

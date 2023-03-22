@@ -23,20 +23,21 @@ public class BandResource {
 
     @GetMapping("/all")
     @ResponseBody
-    public ResponseEntity<List<BandDto>> getAllBands() {
+    public ResponseEntity<List<Band>> getAllBands() {
         List<Band> bands = bandService.findAllBands();
-        List<BandDto> bandsResponse = new ArrayList<>();
-        for (Band b : bands) {
-            BandDto bandDto = new BandDto();
-            bandDto.setBandName(b.getBandName());
-            bandDto.setId(b.getId());
-            bandDto.setGenre(b.getGenre());
-            for (Concert c : b.getConcerts()) {
-                bandDto.addConcertId(c.getId());
-            }
-            bandsResponse.add(bandDto);
-        }
-        return new ResponseEntity<>(bandsResponse, HttpStatus.OK);
+//        List<BandDto> bandsResponse = new ArrayList<>();
+//        for (Band b : bands) {
+//            System.out.println(b.toString());
+//            BandDto bandDto = new BandDto();
+//            bandDto.setBandName(b.getBandName());
+//            bandDto.setId(b.getId());
+//            bandDto.setGenre(b.getGenre());
+////            for (Concert c : b.getConcerts()) {
+////                bandDto.addConcertId(c.getId());
+////            }
+//            bandsResponse.add(bandDto);
+//        }
+        return new ResponseEntity<>(bands, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

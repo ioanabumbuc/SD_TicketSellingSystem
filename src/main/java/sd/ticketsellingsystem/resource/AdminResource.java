@@ -24,7 +24,7 @@ public class AdminResource {
         Admin foundAdmin = adminService.findAdminByCredentials(admin.getUsername(), admin.getPassword());
         if (foundAdmin != null) {
             admin.prePersist();
-            return new ResponseEntity<>(admin, HttpStatus.OK);
+            return new ResponseEntity<>(foundAdmin, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
